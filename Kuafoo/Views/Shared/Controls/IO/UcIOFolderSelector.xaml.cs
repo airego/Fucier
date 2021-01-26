@@ -1,5 +1,4 @@
-﻿using Kuafoo.Service;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -9,23 +8,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Kuafoo.Views.Tools
+namespace Kuafoo.Views.Shared.Controls.IO
 {
     /// <summary>
-    /// Index.xaml 的交互逻辑
+    /// UcIOFolderSelector.xaml 的交互逻辑
     /// </summary>
-    public partial class Index : Window
+    public partial class UcIOFolderSelector : UserControl
     {
-        public Index()
+        public UcIOFolderSelector()
         {
             InitializeComponent();
+        }
 
-            ILoggerService service = new LoggerService();
-            service.SetScreen(rtbLogScreen);
-            service.Info("功能已启动！");
-            service.Info("功能已启动！");
+        private void btnSel_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("暂时不支持，请自己复制");
         }
     }
 }
