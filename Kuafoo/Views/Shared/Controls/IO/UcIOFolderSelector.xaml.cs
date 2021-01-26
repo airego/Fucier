@@ -1,9 +1,6 @@
-﻿using Kuafoo.Controllers;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -14,21 +11,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Kuafoo
+namespace Kuafoo.Views.Shared.Controls.IO
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// UcIOFolderSelector.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class UcIOFolderSelector : UserControl
     {
-        public MainWindow()
+        public UcIOFolderSelector()
         {
             InitializeComponent();
         }
 
-        private void tbMenu_Tools_V2F_Click(object sender, RoutedEventArgs e)
+        private void btnSel_Click(object sender, RoutedEventArgs e)
         {
-            (new ToolsController()).Index().Show();
+            MessageBox.Show("暂时不支持，请自己复制");
         }
     }
 }
