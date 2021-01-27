@@ -4,13 +4,16 @@
 
 #ifndef KUAFOO_LOGGER_H
 #define KUAFOO_LOGGER_H
-
-
+#include <iostream>
+using namespace std;
 
 class Logger {
-
+public:
+    Logger();
+    ~Logger();
+    void Info(string str);
+    void Process(int val);
 };
-
 
 
 #endif //KUAFOO_LOGGER_H
