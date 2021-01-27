@@ -23,7 +23,7 @@
                 <IO:UcIOFileSelector x:Name="ucFile" />
             </Grid>
             <Grid Grid.Row="1">
-                <IO:UcIOFolderSelector x:Name="ucFolder" />
+                <IO:UcIOFolderSelector x:Name="ucFolder" Path="C:/Users/xiaoyong/Desktop/f/images/" />
             </Grid>
         </Grid>
         <Grid Grid.Row="1">
@@ -50,7 +50,11 @@
             </Grid>
         </Grid>
         <Grid Grid.Row="2">
-            <RichTextBox x:Name="rtbLogScreen" />
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="323*"/>
+                <ColumnDefinition Width="440*"/>
+            </Grid.ColumnDefinitions>
+            <RichTextBox x:Name="rtbLogScreen" Grid.ColumnSpan="2" />
         </Grid>
     </Grid>
 </Window>

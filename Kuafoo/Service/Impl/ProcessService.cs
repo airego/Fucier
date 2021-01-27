@@ -15,15 +15,12 @@ namespace Kuafoo.Service
             processMap = map;
             processMap.CurrentProcess = new Process();
             processMap.CurrentProcess.StartInfo.FileName = processMap.App;
-            processMap.CurrentProcess.StartInfo.WorkingDirectory = processMap.WorkDir;
             processMap.CurrentProcess.StartInfo.UseShellExecute = false;
             processMap.CurrentProcess.StartInfo.RedirectStandardInput = true;
             processMap.CurrentProcess.StartInfo.RedirectStandardOutput = true;
             processMap.CurrentProcess.StartInfo.CreateNoWindow = true;
             processMap.CurrentProcess.OutputDataReceived += Handller;
             processMap.CurrentProcess.Start();
-            processMap.ProcessId = processMap.CurrentProcess.Id;
-            processMap.Name = processMap.CurrentProcess.ProcessName;
             processMap.CurrentProcess.StandardInput.WriteLine(processMap.Command);
             processMap.CurrentProcess.BeginOutputReadLine();
         }

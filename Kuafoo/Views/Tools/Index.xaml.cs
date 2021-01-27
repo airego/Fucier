@@ -29,7 +29,6 @@ namespace Kuafoo.Views.Tools
         {
             InitializeComponent();
 
-
             service.SetScreen(rtbLogScreen);
             service.Info("功能已启动！");
 
@@ -38,6 +37,21 @@ namespace Kuafoo.Views.Tools
         public void Response(object sender, DataReceivedEventArgs e)
         {
             service.Info(e.Data);
+            if (e != null && e.Data != null)
+            {
+                if (!(e.Data.Equals(string.Empty) || e.Data.Length <= 0))
+                {
+                    var spls = e.Data.Split(':');
+                    if (spls[0][0].Equals('l'))
+                        service.Info(spls[1]);
+                    else if (spls[0][0].Equals('p'))
+                        pbProcess.Update(Convert.ToInt32(spls[1]));
+                    else
+                        service.Warn(e.Data);
+                }
+                else
+                    service.Info(e.Data);
+            }
         }
         private void btnQuery_Click(object sender, RoutedEventArgs e)
         {
@@ -48,10 +62,14 @@ namespace Kuafoo.Views.Tools
             }
 
             var pm = new ProcessMap();
-            pm.App = "cmd.exe";
-            //ffmpeg -i /data/video_1.mp4 -f image2  -vf fps=fps=1/60 -qscale:v 2 /data/mp4-%05d.jpeg
-            pm.Command = $"{AppMap.App.WorkDir}/{AppMap.App.Plugins}/ffmpeg.exe -i {ucFile.Path} -f image2 {ucFolder.Path}/%06d.png";
+            pm.App = $"E:/Fucier/Plugins/cmake-build-debug/app/video2mat/video2mat.exe";
+            pm.Command = $"{ucFile.Path} {ucFolder.Path}";
             process.Start(pm);
+
+            if(process.Status())
+                service.Info("服务已启动！");
+            else
+                service.Info("服务已关闭！");
         }
 
         private void btnCancle_Click(object sender, RoutedEventArgs e)
