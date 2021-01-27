@@ -25,10 +25,21 @@ namespace Kuafoo
         {
             InitializeComponent();
         }
+        private List<Window> Factory = new List<Window>();
 
         private void tbMenu_Tools_V2F_Click(object sender, RoutedEventArgs e)
         {
-            (new ToolsController()).Index().Show();
+            var window = new ToolsController().Index();
+            Factory.Add(window);
+            window.Show();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            foreach (var window in Factory)
+            {
+                window.Close();
+            }
         }
     }
 }
