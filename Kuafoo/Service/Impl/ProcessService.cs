@@ -13,27 +13,26 @@ namespace Kuafoo.Service
         public void Start(ProcessMap map)
         {
             processMap = map;
-            var process = new Process();
-            process.StartInfo.FileName = processMap.App;
-            process.StartInfo.WorkingDirectory = processMap.WorkDir;
-            process.StartInfo.UseShellExecute = false;
-            process.StartInfo.RedirectStandardInput = true;
-            process.StartInfo.RedirectStandardOutput = true;
-            process.StartInfo.CreateNoWindow = true;
-            process.OutputDataReceived += Handller;
-            process.Start();
-            processMap.ProcessId = process.Id;
-            process.StandardInput.WriteLine(processMap.Command);
-            process.BeginOutputReadLine();
+            processMap.CurrentProcess = new Process();
+            processMap.CurrentProcess.StartInfo.FileName = processMap.App;
+            processMap.CurrentProcess.StartInfo.WorkingDirectory = processMap.WorkDir;
+            processMap.CurrentProcess.StartInfo.UseShellExecute = false;
+            processMap.CurrentProcess.StartInfo.RedirectStandardInput = true;
+            processMap.CurrentProcess.StartInfo.RedirectStandardOutput = true;
+            processMap.CurrentProcess.StartInfo.CreateNoWindow = true;
+            processMap.CurrentProcess.OutputDataReceived += Handller;
+            processMap.CurrentProcess.Start();
+            processMap.ProcessId = processMap.CurrentProcess.Id;
+            processMap.Name = processMap.CurrentProcess.ProcessName;
+            processMap.CurrentProcess.StandardInput.WriteLine(processMap.Command);
+            processMap.CurrentProcess.BeginOutputReadLine();
         }
         public void Kill()
         {
-            Process.GetProcessById(processMap.ProcessId).Kill();
+            processMap.CurrentProcess.Kill(true);
         }
-        public void State()
-        {
-            // Process.GetProcessById(processMap.ProcessId).Threads[0].ThreadState;
-        }
+        public bool Status()
+            => processMap.CurrentProcess.Responding;
         public void SetHandler(DataReceivedEventHandler handler)
         {
             Handller = handler;

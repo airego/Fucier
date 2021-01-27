@@ -10,6 +10,7 @@ namespace Kuafoo.Service
     {
         public void Start(ProcessMap map);
         public void Kill();
+        public bool Status();
         public void SetHandler(DataReceivedEventHandler handler);
     }
 }

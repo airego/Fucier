@@ -8,9 +8,11 @@ namespace Kuafoo.Model
     public class ProcessMap
     {
         public int ProcessId { get; set; }
+        public string Name { get; set; }
         public string Message { get; set; }
         public string Command { get; set; }
         public string App { get; set; } = "cmd.exe";
         public string WorkDir { get; set; } = ".";
+        public Process CurrentProcess { get; set; }
     }
 }

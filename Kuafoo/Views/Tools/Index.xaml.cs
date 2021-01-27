@@ -42,7 +42,7 @@ namespace Kuafoo.Views.Tools
         {
             var pm = new ProcessMap();
             pm.App = "cmd.exe";
-            pm.Command = "dir";
+            pm.Command = "tracert lucoder.com";
             process.Start(pm);
         }
 
@@ -51,6 +51,12 @@ namespace Kuafoo.Views.Tools
             try
             {
                 process.Kill();
+                while (!process.Status())
+                {
+                    service.Info("Wait for process!");
+                    Thread.Sleep(300);
+                }
+                service.Info("Process has been killed!");
             }
             catch (Exception ex)
             {
