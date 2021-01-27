@@ -22,7 +22,7 @@ namespace Kuafoo.Views.Tools
     public partial class Index : Window
     {
         private ILoggerService service = new LoggerService();
-        private ProcessMap process = new ProcessMap();
+        private IProcessService process = new ProcessService();
 
         public Index()
         {
@@ -32,7 +32,7 @@ namespace Kuafoo.Views.Tools
             service.SetScreen(rtbLogScreen);
             service.Info("功能已启动！");
 
-            process.Handller = Response;
+            process.SetHandler(Response);
         }
         public void Response(object sender, DataReceivedEventArgs e)
         {
@@ -40,8 +40,10 @@ namespace Kuafoo.Views.Tools
         }
         private void btnQuery_Click(object sender, RoutedEventArgs e)
         {
-            process.Command = "dir";
-            process.Start();
+            var pm = new ProcessMap();
+            pm.App = "cmd.exe";
+            pm.Command = "dir";
+            process.Start(pm);
         }
 
         private void btnCancle_Click(object sender, RoutedEventArgs e)
