@@ -22,7 +22,11 @@ namespace Kuafoo.Views.Shared.Controls.IO
         {
             InitializeComponent();
         }
-
+        public string Path
+        {
+            get { return tbxPath.Text; }
+            set { tbxPath.Text = value; }
+        }
         private void btnSel_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("暂时不支持，请自己复制");

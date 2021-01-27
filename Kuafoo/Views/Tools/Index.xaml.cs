@@ -23,12 +23,13 @@ namespace Kuafoo.Views.Tools
     {
         private ILoggerService service = new LoggerService();
         private IProcessService process = new ProcessService();
+        public AppMap AppMap { get; set; }
 
         public Index()
         {
             InitializeComponent();
 
-            
+
             service.SetScreen(rtbLogScreen);
             service.Info("功能已启动！");
 
@@ -40,9 +41,16 @@ namespace Kuafoo.Views.Tools
         }
         private void btnQuery_Click(object sender, RoutedEventArgs e)
         {
+            if (ucFile.Path.Equals(string.Empty) || ucFolder.Path.Equals(string.Empty))
+            {
+                service.Error("路径不可为空！");
+                return;
+            }
+
             var pm = new ProcessMap();
             pm.App = "cmd.exe";
-            pm.Command = "tracert lucoder.com";
+            //ffmpeg -i /data/video_1.mp4 -f image2  -vf fps=fps=1/60 -qscale:v 2 /data/mp4-%05d.jpeg
+            pm.Command = $"{AppMap.App.WorkDir}/{AppMap.App.Plugins}/ffmpeg.exe -i {ucFile.Path} -f image2 {ucFolder.Path}/%06d.png";
             process.Start(pm);
         }
 

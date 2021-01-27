@@ -1,8 +1,11 @@
 ﻿using Kuafoo.Controllers;
+using Kuafoo.Model;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,15 +24,20 @@ namespace Kuafoo
     /// </summary>
     public partial class MainWindow : Window
     {
+        private AppMap app { get; set; }
         public MainWindow()
         {
             InitializeComponent();
+
+            app = JsonSerializer.Deserialize<AppMap>(File.ReadAllText("E:/Fucier/Kuafoo/app.json")) ;
         }
         private List<Window> Factory = new List<Window>();
 
         private void tbMenu_Tools_V2F_Click(object sender, RoutedEventArgs e)
         {
-            var window = new ToolsController().Index();
+            var controller = new ToolsController();
+            controller.AppMap = app;
+            var window = controller.Index();
             Factory.Add(window);
             window.Show();
         }
