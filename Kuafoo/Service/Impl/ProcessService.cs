@@ -15,6 +15,7 @@ namespace Kuafoo.Service
             processMap = map;
             processMap.CurrentProcess = new Process();
             processMap.CurrentProcess.StartInfo.FileName = processMap.App;
+            processMap.CurrentProcess.StartInfo.WorkingDirectory = processMap.WorkDir;
             processMap.CurrentProcess.StartInfo.UseShellExecute = false;
             processMap.CurrentProcess.StartInfo.RedirectStandardInput = true;
             processMap.CurrentProcess.StartInfo.RedirectStandardOutput = true;

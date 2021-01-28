@@ -60,16 +60,12 @@ namespace Kuafoo.Views.Tools
                 service.Error("路径不可为空！");
                 return;
             }
-
+            pbProcess.Update(0);
             var pm = new ProcessMap();
-            pm.App = $"E:/Fucier/Plugins/cmake-build-debug/app/video2mat/video2mat.exe";
-            pm.Command = $"{ucFile.Path} {ucFolder.Path}";
+            pm.App = $"cmd.exe";
+            pm.Command = $"{AppMap.App.WorkDir}/{AppMap.App.Plugins}/v2m.exe {ucFile.Path} {ucFolder.Path}";
             process.Start(pm);
-
-            if(process.Status())
-                service.Info("服务已启动！");
-            else
-                service.Info("服务已关闭！");
+            service.Info("服务已启动！");
         }
 
         private void btnCancle_Click(object sender, RoutedEventArgs e)
@@ -82,6 +78,7 @@ namespace Kuafoo.Views.Tools
                     service.Info("Wait for process!");
                     Thread.Sleep(300);
                 }
+                pbProcess.Update(100);
                 service.Info("Process has been killed!");
             }
             catch (Exception ex)
