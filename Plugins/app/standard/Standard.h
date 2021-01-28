@@ -8,17 +8,26 @@
 #include <opencv2/opencv.hpp>
 #include "Logger.h"
 #include "Utils.h"
+#include <vector>
 
 using namespace std;
 using namespace cv;
 
-class Video2Mat {
+class Standard {
 private:
     Utils* util;
+    vector<Mat> list;
+    void Thenengrad(Mat &mat);
+    void Eav(Mat &mat);
+    void Energy_gradient(Mat &mat);
+    void Brenner(Mat &mat);
+    void runAction(int i);
 public:
+    Standard(){};
+    ~Standard(){};
     struct Params{
-        string  file,folder,ext = "png";
-        int start = 1,stop = -1,skip = 0;
+        string  file,folder;
+        int action;
         Logger* logger;
     }params;
     void run();

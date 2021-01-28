@@ -1,7 +1,7 @@
 //
 // Created by xiaoyong on 2021/1/27.
 //
-#include "Video2Mat.h"
+#include "Standard.h"
 int main(int argc, char** argvs){
 
     if(argc <= 2)
@@ -9,15 +9,12 @@ int main(int argc, char** argvs){
     Logger log;
     log.Info("Start process.");
 
-    Video2Mat v2m;
-    v2m.params.file = argvs[1];
-    v2m.params.folder = argvs[2];
-    v2m.params.skip = 1;
-    v2m.params.ext = "png";
-    v2m.params.start = 0;
-    v2m.params.stop = -1;
-    v2m.params.logger = &log;
-    v2m.run();
+    Standard standard;
+    standard.params.logger = &log;
+    standard.params.file = argvs[1];
+    standard.params.action = std::atoi(argvs[2]);
+    standard.run();
+
     log.Info("Stop process.");
     return 0;
 }

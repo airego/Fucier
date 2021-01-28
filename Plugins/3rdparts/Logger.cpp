@@ -12,3 +12,6 @@ void Logger::Info(string str) {
 void Logger::Process(int val) {
     cout<<"p:"<<val<<endl;
 }
+void Logger::Result(string val) {
+    cout<<"r:"<<val<<endl;
+}

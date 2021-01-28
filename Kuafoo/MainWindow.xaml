@@ -39,10 +39,14 @@
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="100" />
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0">
                             <Button Content="视频转图片" x:Name="tbMenu_Tools_V2F" Click="tbMenu_Tools_V2F_Click" />
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Button Content="图片质量" x:Name="tbMenu_Tools_Standard" Click="tbMenu_Tools_Standard_Click" />
                         </Grid>
                     </Grid>
                 </TabItem>

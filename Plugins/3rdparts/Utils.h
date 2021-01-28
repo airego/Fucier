@@ -13,6 +13,7 @@ using namespace std;
 class Utils {
 public:
     int mkdirs(string path);
+    bool exist(string file);
 };
 
 

@@ -31,6 +31,13 @@ namespace Kuafoo
 
             app = JsonSerializer.Deserialize<AppMap>(File.ReadAllText("E:/Fucier/Kuafoo/app.json")) ;
         }
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            foreach (var window in Factory)
+            {
+                window.Close();
+            }
+        }
         private List<Window> Factory = new List<Window>();
 
         #region 文件
@@ -52,6 +59,7 @@ namespace Kuafoo
         }
         #endregion
 
+        #region 工具
         private void tbMenu_Tools_V2F_Click(object sender, RoutedEventArgs e)
         {
             var controller = new ToolsController();
@@ -61,12 +69,14 @@ namespace Kuafoo
             window.Show();
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void tbMenu_Tools_Standard_Click(object sender, RoutedEventArgs e)
         {
-            foreach (var window in Factory)
-            {
-                window.Close();
-            }
+            var controller = new ToolsController();
+            controller.AppMap = app;
+            var window = controller.Standard();
+            Factory.Add(window);
+            window.Show();
         }
+        #endregion
     }
 }

@@ -11,8 +11,9 @@ class Logger {
 public:
     Logger();
     ~Logger();
-    void Info(string str);
+    void Info(string info);
     void Process(int val);
+    void Result(string info);
 };
 
 

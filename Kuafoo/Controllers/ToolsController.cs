@@ -16,5 +16,11 @@ namespace Kuafoo.Controllers
             page.AppMap = AppMap;
             return page;
         }
+        public Views.Tools.Standard Standard()
+        {
+            var page = new Views.Tools.Standard();
+            page.AppMap = AppMap;
+            return page;
+        }
     }
 }

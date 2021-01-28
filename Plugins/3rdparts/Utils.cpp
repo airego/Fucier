@@ -3,6 +3,7 @@
 //
 
 #include "Utils.h"
+#include <sys/stat.h>
 
 int Utils::mkdirs(string path) {
 
@@ -24,4 +25,8 @@ int Utils::mkdirs(string path) {
         }
     }
     return 0;
+}
+bool Utils::exist(string file) {
+    struct stat buffer;
+    return (stat (file.c_str(), &buffer) == 0);
 }
