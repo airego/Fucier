@@ -13,7 +13,7 @@
 using namespace std;
 using namespace cv;
 
-class Standard {
+class Filters {
 private:
     Utils* util;
     vector<Mat> list;
@@ -23,11 +23,11 @@ private:
     void Brenner(Mat &mat);
     void runAction(int i);
 public:
-    Standard(){};
-    ~Standard(){};
+    Filters(){};
+    ~Filters(){};
     struct Params{
-        string  file,folder;
-        int action;
+        string  src,folder;
+        int type = 0, action = 0, file = 0;
         Logger* logger;
     }params;
     void run();
