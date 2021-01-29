@@ -1,37 +1,69 @@
-﻿<Window x:Class="Kuafoo.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kuafoo"
+        xmlns:Controls="clr-namespace:Kuafoo.Views.Shared.Controls" x:Class="Kuafoo.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="夸父平台" Height="450" Width="800"
+        Closing="Window_Closing">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="1,1,3,1" />
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Height" Value="40" />
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="70" />
             <RowDefinition Height="*" />
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
-        <Grid Name="gdTop" Grid.Row="0">
-            <TabControl Name="tbMenu">
-                <TabItem Name="tbMenu_File" Header="文件管理"></TabItem>
-                <TabItem Name="tbMenu_Tools" Header="常用工具">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="100" />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <Grid Grid.Column="0">
-                            <Button Content="视频转图片" Name="tbMenu_Tools_V2F" Click="tbMenu_Tools_V2F_Click" />
+        <Grid x:Name="gdTop" Grid.Row="0">
+            <StackPanel>
+                <TabControl x:Name="tbMenu" Panel.ZIndex="1">
+                    <TabItem x:Name="tbMenu_File" Header="文件">
+                        <WrapPanel>
+                            <Button x:Name="tbMenu_File_Open" Content="打开" Click="tbMenu_File_Open_Click" />
+                            <Button x:Name="tbMenu_File_Save" Content="保存"/>
+                            <Button x:Name="tbMenu_File_Scal1_1" Content="等比显示" Click="tbMenu_File_Scal1_1_Click"/>
+                        </WrapPanel>
+                    </TabItem>
+                    <TabItem x:Name="tbMenu_Edit" Header="编辑">
+                        <WrapPanel>
+
+                        </WrapPanel>
+                    </TabItem>
+                    <TabItem x:Name="tbMenu_Filters" Header="滤波器"/>
+                    <TabItem x:Name="tbMenu_Quality" Header="质量提升" />
+                    <TabItem x:Name="tbMenu_DetectionAndTracking" Header="检测/跟踪" />
+                    <TabItem x:Name="tbMenu_3D" Header="三维重建" />
+                    <TabItem x:Name="tbMenu_Tools" Header="常用工具">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <Button Content="视频转图片" x:Name="tbMenu_Tools_V2F" Click="tbMenu_Tools_V2F_Click" />
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <Button Content="图片质量" x:Name="tbMenu_Tools_Standard" Click="tbMenu_Tools_Standard_Click" />
+                            </Grid>
                         </Grid>
-                    </Grid>
-                </TabItem>
-                <TabItem Name="tbMenu_About" Header="关于软件"></TabItem>
-            </TabControl>
+                    </TabItem>
+                    <TabItem x:Name="tbMenu_About" Header="关于软件"/>
+                </TabControl>
+            </StackPanel>
         </Grid>
-        <Grid Name="gdMiddle" Grid.Row="1">
-            <WrapPanel />
+        <Grid x:Name="gdMiddle" Grid.Row="1">
+            <StackPanel>
+                <Controls:UcImageViewer x:Name="imgViewer" />
+            </StackPanel>
         </Grid>
-        <Grid Name="gdBottom" Grid.Row="2"></Grid>
+        <Grid x:Name="gdBottom" Grid.Row="2"/>
     </Grid>
 </Window>

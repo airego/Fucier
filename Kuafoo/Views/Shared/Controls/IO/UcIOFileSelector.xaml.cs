@@ -27,24 +27,16 @@ namespace Kuafoo.Views.Shared.Controls.IO
             get { return tbxPath.Text; }
             set { tbxPath.Text = value; }
         }
+        public string Extension { get; set; } = "MP4 (.mp4)|*.mp4|MKV (.mkv)|*.mkv|ALL file(.*)|*.*";
+        public string ExtensionDefault { get; set; } = ".mp4";
         private void btnSel_Click(object sender, RoutedEventArgs e)
         {
-            // Create OpenFileDialog 
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-
-            // Set filter for file extension and default file extension 
-            dlg.DefaultExt = ".mp4";
-            dlg.Filter = "MP4 (.mp4)|*.mp4|MKV (.mkv)|*.mkv|ALL file(.*)|*.*";
-
-            // Display OpenFileDialog by calling ShowDialog method 
+            dlg.DefaultExt = ExtensionDefault;
+            dlg.Filter = Extension;
             bool? result = dlg.ShowDialog();
-
-            // Get the selected file name and display in a TextBox 
             if (result == true)
-            {
-                // Open document 
                 Path = dlg.FileName;
-            }
         }
     }
 }

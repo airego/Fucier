@@ -11,25 +11,27 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Kuafoo.Views.Shared.Controls.IO
+namespace Kuafoo.Views.Shared.Controls
 {
     /// <summary>
-    /// UcIOFolderSelector.xaml 的交互逻辑
+    /// UcProcessBar.xaml 的交互逻辑
     /// </summary>
-    public partial class UcIOFolderSelector : UserControl
+    public partial class UcProcessBar : UserControl
     {
-        public UcIOFolderSelector()
+        public UcProcessBar()
         {
             InitializeComponent();
         }
-        public string Path
+        public void Update(int val)
         {
-            get { return tbxPath.Text; }
-            set { tbxPath.Text = value; }
-        }
-        private void btnSel_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("暂时不支持，请自己复制");
+            labProcess.Dispatcher.Invoke(() =>
+            {
+                labProcess.Content = $"{val} %";
+            });
+            pbProcess.Dispatcher.Invoke(() =>
+            {
+                pbProcess.Value = val;
+            });
         }
     }
 }

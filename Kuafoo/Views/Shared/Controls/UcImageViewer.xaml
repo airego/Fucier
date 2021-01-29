@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="Kuafoo.Views.Shared.Controls.UcImageViewer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Kuafoo.Views.Shared.Controls"
+             mc:Ignorable="d" 
+             d:Height="50"
+             d:Width="50"
+             Margin="5">
+    <Grid x:Name="viewerRoot">
+        <DockPanel>
+            <Image x:Name="img" 
+                   MouseWheel="img_MouseWheel" 
+                   MouseDown="img_MouseDown"
+                   MouseUp="img_MouseUp"
+                   MouseLeave="img_MouseLeave"
+                   MouseMove="img_MouseMove"
+                   Stretch="Fill">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform x:Name="sfr" />
+                        <TranslateTransform x:Name="tlt" />
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+        </DockPanel>
+    </Grid>
+</UserControl>

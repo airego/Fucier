@@ -1,25 +1,18 @@
-﻿<Window xmlns:IO="clr-namespace:Kuafoo.Views.Shared.Controls.IO"  x:Class="Kuafoo.Views.Tools.Index"
+﻿<Window xmlns:IO="clr-namespace:Kuafoo.Views.Shared.Controls.IO"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kuafoo.Views.Tools"
+        xmlns:Controls="clr-namespace:Kuafoo.Views.Shared.Controls"  x:Class="Kuafoo.Views.Tools.Index"
         mc:Ignorable="d"
-        Title="视频转图片" Height="450" Width="800">
-    <Window.Resources>
-        <Style TargetType="TextBlock">
-            <Setter Property="Foreground"  Value="Black" />
-            <Setter Property="FontSize" Value="20" />
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="TextWrapping" Value="Wrap" />
-            <Setter Property="HorizontalAlignment" Value="Center" />
-        </Style>
-    </Window.Resources>
+        ResizeMode="NoResize"
+        Title="视频转图片" Height="503" Width="763">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Name="gdTop" Height="60" />
-            <RowDefinition Name="gdBody" />
-            <RowDefinition Name="gdButtom" Height="100" />
+            <RowDefinition x:Name="gdTop" Height="60" />
+            <RowDefinition x:Name="gdBody" />
+            <RowDefinition x:Name="gdButtom" Height="100" />
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Grid.RowDefinitions>
@@ -30,12 +23,38 @@
                 <IO:UcIOFileSelector x:Name="ucFile" />
             </Grid>
             <Grid Grid.Row="1">
-                <IO:UcIOFolderSelector x:Name="ucFolder" />
+                <IO:UcIOFolderSelector x:Name="ucFolder" Path="C:/Users/xiaoyong/Desktop/f/images/" />
             </Grid>
         </Grid>
-        <Grid Grid.Row="1"></Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="30" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0"/>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="50" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Controls:UcProcessBar x:Name="pbProcess" />
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button x:Name="btnQuery" Click="btnQuery_Click" Content="处理" />
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Button x:Name="btnCancle" Click="btnCancle_Click"  Content="取消" />
+                </Grid>
+            </Grid>
+        </Grid>
         <Grid Grid.Row="2">
-           <RichTextBox x:Name="rtbLogScreen" /> 
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="323*"/>
+                <ColumnDefinition Width="440*"/>
+            </Grid.ColumnDefinitions>
+            <RichTextBox x:Name="rtbLogScreen" Grid.ColumnSpan="2" />
         </Grid>
     </Grid>
 </Window>

@@ -16,6 +16,7 @@ namespace Kuafoo.Service
                 System.Windows.Application.Current.Dispatcher.Invoke(new Action(() =>
                 {
                     Screen.AppendText($"{info}\n");
+                    Screen.ScrollToEnd();
                 }));
             }
         }
@@ -25,7 +26,6 @@ namespace Kuafoo.Service
 
             if (conf)
             {
-                //139 35 35
                 Screen.Background = new SolidColorBrush(Color.FromRgb(46, 52, 54));
                 Screen.Foreground = new SolidColorBrush(Color.FromRgb(255, 255, 255));
             }
