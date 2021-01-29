@@ -8,9 +8,11 @@
 #include <opencv2/opencv.hpp>
 #include "Logger.h"
 #include "Utils.h"
+#include "opencv2/superres.hpp"
 
 using namespace std;
 using namespace cv;
+using namespace cv::superres;
 
 class SuperR {
 private:
@@ -24,6 +26,8 @@ public:
         Logger* logger;
     }params;
     void run();
+    static Ptr<cv::superres::DenseOpticalFlowExt> createOptFlow(const string& name, bool useGpu);
+
 };
 
 

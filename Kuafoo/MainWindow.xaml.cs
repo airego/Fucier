@@ -51,11 +51,11 @@ namespace Kuafoo
             {
                 var file = dlg.FileName;
                 imgViewer.Source = file;
-                //BitmapImage bitmap = new BitmapImage(new Uri(file));
-                //imgViewer.Source = bitmap;
-                //imgViewer.Width = bitmap.PixelWidth;
-                //imgViewer.Height = bitmap.Height;
             }
+        }
+        private void tbMenu_File_Scal1_1_Click(object sender, RoutedEventArgs e)
+        {
+            imgViewer.ScalToNormal();
         }
         #endregion
 
@@ -78,5 +78,7 @@ namespace Kuafoo
             window.Show();
         }
         #endregion
+
+        
     }
 }

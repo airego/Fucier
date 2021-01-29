@@ -17,11 +17,7 @@ class Filters {
 private:
     Utils* util;
     vector<Mat> list;
-    void Thenengrad(Mat &mat);
-    void Eav(Mat &mat);
-    void Energy_gradient(Mat &mat);
-    void Brenner(Mat &mat);
-    void runAction(int i);
+    Mat guidedFilter(cv::Mat I, cv::Mat P, int type, int radius, double eps);
 public:
     Filters(){};
     ~Filters(){};
@@ -31,6 +27,7 @@ public:
         Logger* logger;
     }params;
     void run();
+    Mat guidedFilterAction(cv::Mat guidedImg, cv::Mat inputImg, int radius, double eps);
 };
 
 

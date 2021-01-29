@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Kuafoo"
         xmlns:Controls="clr-namespace:Kuafoo.Views.Shared.Controls" x:Class="Kuafoo.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="夸父平台" Height="450" Width="800"
         Closing="Window_Closing">
     <Window.Resources>
         <Style TargetType="Button">
@@ -22,36 +22,42 @@
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
         <Grid x:Name="gdTop" Grid.Row="0">
-            <TabControl x:Name="tbMenu">
-                <TabItem x:Name="tbMenu_File" Header="文件">
-                    <WrapPanel>
-                        <Button x:Name="tbMenu_File_Open" Content="打开" Click="tbMenu_File_Open_Click" />
-                        <Button x:Name="tbMenu_File_Save" Content="保存"/>
-                    </WrapPanel>
-                </TabItem>
-                <TabItem x:Name="tbMenu_Edit" Header="编辑">
-                    <WrapPanel>
-                        
-                    </WrapPanel>
-                </TabItem>
-                <TabItem x:Name="tbMenu_Filters" Header="滤波器"/>
-                <TabItem x:Name="tbMenu_Tools" Header="常用工具">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="100" />
-                            <ColumnDefinition Width="100" />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <Grid Grid.Column="0">
-                            <Button Content="视频转图片" x:Name="tbMenu_Tools_V2F" Click="tbMenu_Tools_V2F_Click" />
+            <StackPanel>
+                <TabControl x:Name="tbMenu" Panel.ZIndex="1">
+                    <TabItem x:Name="tbMenu_File" Header="文件">
+                        <WrapPanel>
+                            <Button x:Name="tbMenu_File_Open" Content="打开" Click="tbMenu_File_Open_Click" />
+                            <Button x:Name="tbMenu_File_Save" Content="保存"/>
+                            <Button x:Name="tbMenu_File_Scal1_1" Content="等比显示" Click="tbMenu_File_Scal1_1_Click"/>
+                        </WrapPanel>
+                    </TabItem>
+                    <TabItem x:Name="tbMenu_Edit" Header="编辑">
+                        <WrapPanel>
+
+                        </WrapPanel>
+                    </TabItem>
+                    <TabItem x:Name="tbMenu_Filters" Header="滤波器"/>
+                    <TabItem x:Name="tbMenu_Quality" Header="质量提升" />
+                    <TabItem x:Name="tbMenu_DetectionAndTracking" Header="检测/跟踪" />
+                    <TabItem x:Name="tbMenu_3D" Header="三维重建" />
+                    <TabItem x:Name="tbMenu_Tools" Header="常用工具">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <Button Content="视频转图片" x:Name="tbMenu_Tools_V2F" Click="tbMenu_Tools_V2F_Click" />
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <Button Content="图片质量" x:Name="tbMenu_Tools_Standard" Click="tbMenu_Tools_Standard_Click" />
+                            </Grid>
                         </Grid>
-                        <Grid Grid.Column="1">
-                            <Button Content="图片质量" x:Name="tbMenu_Tools_Standard" Click="tbMenu_Tools_Standard_Click" />
-                        </Grid>
-                    </Grid>
-                </TabItem>
-                <TabItem x:Name="tbMenu_About" Header="关于软件"/>
-            </TabControl>
+                    </TabItem>
+                    <TabItem x:Name="tbMenu_About" Header="关于软件"/>
+                </TabControl>
+            </StackPanel>
         </Grid>
         <Grid x:Name="gdMiddle" Grid.Row="1">
             <StackPanel>

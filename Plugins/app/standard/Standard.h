@@ -21,6 +21,9 @@ private:
     void Eav(Mat &mat);
     void Energy_gradient(Mat &mat);
     void Brenner(Mat &mat);
+    void SNR(Mat &mat);
+    void PSNR(Mat &I1, Mat &I2);
+    void SSIM(Mat &I1, Mat &I2);
     void runAction(int i);
 public:
     Standard(){};

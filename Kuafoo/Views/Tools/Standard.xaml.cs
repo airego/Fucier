@@ -61,8 +61,9 @@ namespace Kuafoo.Views.Tools
                 case "eav": action = "2"; break;
                 case "energy_gradient": action = "3"; break;
                 case "banner": action = "4"; break;
-                default:
-                    break;
+                case "psnr": action = "5"; break;
+                case "ssim": action = "6"; break;
+                default: action = "1"; break;
             }
             pm.Command = $"{AppMap.App.WorkDir}/{AppMap.App.Plugins}/standard.exe {ucFile.Path} {action}";
             process.Start(pm);

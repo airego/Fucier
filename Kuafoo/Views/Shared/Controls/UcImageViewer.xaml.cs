@@ -27,6 +27,11 @@ namespace Kuafoo.Views.Shared.Controls
             get { return img.Source.ToString(); }
             set { img.Source = new BitmapImage(new Uri(value)); }
         }
+        public void ScalToNormal()
+        {
+            sfr.CenterY = sfr.CenterX = 0;
+            sfr.ScaleX = sfr.ScaleY = 1;
+        }
         private void img_MouseWheel(object sender, MouseWheelEventArgs e)
         {
             Point centerPoint = e.GetPosition(viewerRoot);

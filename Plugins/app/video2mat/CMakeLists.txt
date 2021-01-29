@@ -1,4 +1,4 @@
-﻿project ("Kuafoo_App_Video2Mat")
+﻿project ("Kuafoo_App_Plugins")
 
 SET(OpenCV_DIR ${OpenCV_DIR_Env})
 FIND_PACKAGE(OpenCV REQUIRED)

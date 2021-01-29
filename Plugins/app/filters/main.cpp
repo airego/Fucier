@@ -18,17 +18,17 @@
  */
 int main(int argc, char** argvs){
 
-    if(argc <= 2)
-    return -1;
+//    if(argc <= 2)
+//        return -1;
     Logger log;
     log.Info("Start process.");
 
     Filters standard;
     standard.params.logger = &log;
-    standard.params.file = atoi(argvs[1]);
-    standard.params.type = std::atoi(argvs[2]);
-    standard.params.action = std::atoi(argvs[3]);
-    standard.params.src = argvs[4];
+//    standard.params.file = atoi(argvs[1]);
+//    standard.params.type = std::atoi(argvs[2]);
+//    standard.params.action = std::atoi(argvs[3]);
+//    standard.params.src = argvs[4];
     standard.run();
 
     log.Info("Stop process.");
