@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Kuafoo.Service
+namespace Kuafoo.Services
 {
     public interface IDownService
     {

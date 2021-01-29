@@ -4,7 +4,7 @@ using System.Text;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace Kuafoo.Service
+namespace Kuafoo.Services
 {
     public class LoggerService : ILoggerService
     {

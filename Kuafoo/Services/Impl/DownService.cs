@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using static Kuafoo.Service.IDownService;
+using static Kuafoo.Services.IDownService;
 
-namespace Kuafoo.Service
+namespace Kuafoo.Services
 {
     public class DownService : IDownService
     {
