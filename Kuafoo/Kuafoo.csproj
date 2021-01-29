@@ -12,4 +12,17 @@
     <Folder Include="Views\Filters\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Views\About\Index.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Views\About\Index.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
 </Project>

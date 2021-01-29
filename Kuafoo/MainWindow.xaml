@@ -40,6 +40,11 @@
                     <TabItem x:Name="tbMenu_Quality" Header="质量提升" />
                     <TabItem x:Name="tbMenu_DetectionAndTracking" Header="检测/跟踪" />
                     <TabItem x:Name="tbMenu_3D" Header="三维重建" />
+                    <TabItem x:Name="tbMenu_Parallel" Header="并行计算">
+                        <WrapPanel>
+                            <Button Content="盘古计算" x:Name="btnPanguos" />
+                        </WrapPanel>
+                    </TabItem>
                     <TabItem x:Name="tbMenu_Tools" Header="常用工具">
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -55,7 +60,11 @@
                             </Grid>
                         </Grid>
                     </TabItem>
-                    <TabItem x:Name="tbMenu_About" Header="关于软件"/>
+                    <TabItem x:Name="tbMenu_About" Header="关于软件">
+                        <WrapPanel>
+                            <Button x:Name="btnAbout" Content="关于" Click="btnAbout_Click" />
+                        </WrapPanel>
+                    </TabItem>
                 </TabControl>
             </StackPanel>
         </Grid>

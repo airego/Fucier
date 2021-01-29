@@ -23,7 +23,7 @@
                 <IO:UcIOFileSelector x:Name="ucFile" />
             </Grid>
             <Grid Grid.Row="1">
-                <IO:UcIOFolderSelector x:Name="ucFolder" Path="C:/Users/xiaoyong/Desktop/f/images/" />
+                <IO:UcIOFolderSelector x:Name="ucFolder" Path="" />
             </Grid>
         </Grid>
         <Grid Grid.Row="1">
