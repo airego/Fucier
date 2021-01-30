@@ -2,5 +2,5 @@
 
 SET(OpenCV_DIR ${OpenCV_DIR_Env})
 FIND_PACKAGE(OpenCV REQUIRED)
-add_executable(video2mat Video2Mat.h Video2Mat.cpp main.cpp)
-target_link_libraries(video2mat ${OpenCV_LIBS} core)
+add_executable(sfm SFMController.h SFMController.cpp)
+target_link_libraries(sfm ${OpenCV_LIBS} core)

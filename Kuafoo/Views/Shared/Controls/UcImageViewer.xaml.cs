@@ -29,7 +29,10 @@ namespace Kuafoo.Views.Shared.Controls
         }
         public void ScalToNormal()
         {
-            sfr.CenterY = sfr.CenterX = 0;
+            var centerPoint = Mouse.GetPosition(viewerRoot);
+            var p = viewerRoot.PointFromScreen(new Point(0,0));
+            sfr.CenterX = p.X;
+            sfr.CenterY = p.Y;
             sfr.ScaleX = sfr.ScaleY = 1;
         }
         private void img_MouseWheel(object sender, MouseWheelEventArgs e)

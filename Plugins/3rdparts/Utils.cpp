@@ -3,7 +3,9 @@
 //
 
 #include "Utils.h"
+#include <direct.h>
 #include <sys/stat.h>
+#include <io.h>
 
 int Utils::mkdirs(string path) {
 
