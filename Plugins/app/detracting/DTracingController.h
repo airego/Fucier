@@ -12,7 +12,7 @@
 using namespace std;
 using namespace cv;
 
-class DTracingController {
+class SFMController {
 private:
     Utils* util;
     void save_structure(string file_name, vector<Mat>& rotations, vector<Mat>& motions, Mat& structure, vector<Vec3b>& colors);
