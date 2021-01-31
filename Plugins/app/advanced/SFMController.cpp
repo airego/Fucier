@@ -7,7 +7,7 @@
 #include <opencv2/xfeatures2d/nonfree.hpp>
 #include <opencv2/features2d/features2d.hpp>
 
-void SFMController::run() {
+void DTracingController::run() {
     string img1 = "0004.png";
     string img2 = "0006.png";
     vector<string> img_names = { img1, img2 };
@@ -50,7 +50,7 @@ void SFMController::run() {
     save_structure(".\\Viewer\\structure.yml", rotations, motions, structure, c1);
 }
 
-void SFMController::extract_features(
+void DTracingController::extract_features(
         vector<string>& image_names,
         vector<vector<KeyPoint>>& key_points_for_all,
         vector<Mat>& descriptor_for_all,
@@ -90,7 +90,7 @@ void SFMController::extract_features(
     }
 }
 
-void SFMController::match_features(Mat& query, Mat& train, vector<DMatch>& matches)
+void DTracingController::match_features(Mat& query, Mat& train, vector<DMatch>& matches)
 {
     vector<vector<DMatch>> knn_matches;
     BFMatcher matcher(NORM_L2);
@@ -123,7 +123,7 @@ void SFMController::match_features(Mat& query, Mat& train, vector<DMatch>& match
     }
 }
 
-bool SFMController::find_transform(Mat& K, vector<Point2f>& p1, vector<Point2f>& p2, Mat& R, Mat& T, Mat& mask)
+bool DTracingController::find_transform(Mat& K, vector<Point2f>& p1, vector<Point2f>& p2, Mat& R, Mat& T, Mat& mask)
 {
     //根据内参矩阵获取相机的焦距和光心坐标（主点坐标）
     double focal_length = 0.5*(K.at<double>(0) + K.at<double>(4));
@@ -149,7 +149,7 @@ bool SFMController::find_transform(Mat& K, vector<Point2f>& p1, vector<Point2f>&
     return true;
 }
 
-void SFMController::get_matched_points(vector<KeyPoint>& p1,vector<KeyPoint>& p2,vector<DMatch> matches,vector<Point2f>& out_p1,vector<Point2f>& out_p2)
+void DTracingController::get_matched_points(vector<KeyPoint>& p1, vector<KeyPoint>& p2, vector<DMatch> matches, vector<Point2f>& out_p1, vector<Point2f>& out_p2)
 {
     out_p1.clear();
     out_p2.clear();
@@ -160,7 +160,7 @@ void SFMController::get_matched_points(vector<KeyPoint>& p1,vector<KeyPoint>& p2
     }
 }
 
-void SFMController::get_matched_colors(vector<Vec3b>& c1,vector<Vec3b>& c2,vector<DMatch> matches,vector<Vec3b>& out_c1,vector<Vec3b>& out_c2)
+void DTracingController::get_matched_colors(vector<Vec3b>& c1, vector<Vec3b>& c2, vector<DMatch> matches, vector<Vec3b>& out_c1, vector<Vec3b>& out_c2)
 {
     out_c1.clear();
     out_c2.clear();
@@ -171,7 +171,7 @@ void SFMController::get_matched_colors(vector<Vec3b>& c1,vector<Vec3b>& c2,vecto
     }
 }
 
-void SFMController::reconstruct(Mat& K, Mat& R, Mat& T, vector<Point2f>& p1, vector<Point2f>& p2, Mat& structure)
+void DTracingController::reconstruct(Mat& K, Mat& R, Mat& T, vector<Point2f>& p1, vector<Point2f>& p2, Mat& structure)
 {
     //两个相机的投影矩阵[R T]，triangulatePoints只支持float型
     Mat proj1(3, 4, CV_32FC1);
@@ -192,7 +192,7 @@ void SFMController::reconstruct(Mat& K, Mat& R, Mat& T, vector<Point2f>& p1, vec
     triangulatePoints(proj1, proj2, p1, p2, structure);
 }
 
-void SFMController::maskout_points(vector<Point2f>& p1, Mat& mask)
+void DTracingController::maskout_points(vector<Point2f>& p1, Mat& mask)
 {
     vector<Point2f> p1_copy = p1;
     p1.clear();
@@ -204,7 +204,7 @@ void SFMController::maskout_points(vector<Point2f>& p1, Mat& mask)
     }
 }
 
-void SFMController::maskout_colors(vector<Vec3b>& p1, Mat& mask)
+void DTracingController::maskout_colors(vector<Vec3b>& p1, Mat& mask)
 {
     vector<Vec3b> p1_copy = p1;
     p1.clear();
@@ -216,7 +216,7 @@ void SFMController::maskout_colors(vector<Vec3b>& p1, Mat& mask)
     }
 }
 
-void SFMController::save_structure(string file_name, vector<Mat>& rotations, vector<Mat>& motions, Mat& structure, vector<Vec3b>& colors)
+void DTracingController::save_structure(string file_name, vector<Mat>& rotations, vector<Mat>& motions, Mat& structure, vector<Vec3b>& colors)
 {
     int n = (int)rotations.size();
 
@@ -259,7 +259,7 @@ void SFMController::save_structure(string file_name, vector<Mat>& rotations, vec
 
 int main(int argc, char** argvs){
 
-    SFMController c;
+    DTracingController c;
     c.run();
 
     return 0;
