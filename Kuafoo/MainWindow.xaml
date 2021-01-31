@@ -9,30 +9,26 @@
         Title="夸父平台" Height="450" Width="800"
         Closing="Window_Closing">
     <Window.Resources>
-        <Style TargetType="Button">
-            <Setter Property="Margin" Value="1,1,3,1" />
-            <Setter Property="Width" Value="100" />
-            <Setter Property="Height" Value="40" />
-        </Style>
         <ContextMenu x:Key="cmListView">
-            <MenuItem Name="lsvItemOpen" Header="打开" Click="lsvItemOpen_Click" />
+            <MenuItem Name="lsvItemOpen" Header="打开" Click="lsvItemOpen_Click"/>
+            <Separator></Separator>
             <MenuItem Name="lsvItemClose" Header="关闭" Click="lsvItemClose_Click" />
         </ContextMenu>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="70" />
+            <RowDefinition Height="80" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <Grid x:Name="gdTop" Grid.Row="0">
             <StackPanel>
-                <TabControl x:Name="tbMenu" Panel.ZIndex="1">
+                <TabControl x:Name="tbMenu" Panel.ZIndex="1" Style="{StaticResource MenuTab}">
                     <TabItem x:Name="tbMenu_File" Header="文件">
                         <WrapPanel>
-                            <Button x:Name="tbMenu_File_Open" Content="打开" Click="tbMenu_File_Open_Click" />
-                            <Button x:Name="tbMenu_File_Save" Content="保存"/>
-                            <Button x:Name="tbMenu_File_Scal1_1" Content="等比显示" Click="tbMenu_File_Scal1_1_Click"/>
+                            <Button x:Name="tbMenu_File_Open" Content="打开" Click="tbMenu_File_Open_Click" Style="{StaticResource MenuButton}" />
+                            <Button x:Name="tbMenu_File_Save" Content="保存" Style="{StaticResource MenuButton}" />
+                            <Button x:Name="tbMenu_File_Scal1_1" Content="等比显示" Click="tbMenu_File_Scal1_1_Click" Style="{StaticResource MenuButton}" />
                         </WrapPanel>
                     </TabItem>
                     <TabItem x:Name="tbMenu_Edit" Header="编辑">
@@ -46,27 +42,18 @@
                     <TabItem x:Name="tbMenu_3D" Header="三维重建" />
                     <TabItem x:Name="tbMenu_Parallel" Header="并行计算">
                         <WrapPanel>
-                            <Button Content="盘古计算" x:Name="btnPanguos" />
+                            <Button Content="盘古计算" x:Name="btnPanguos"  Style="{StaticResource MenuButton}" />
                         </WrapPanel>
                     </TabItem>
                     <TabItem x:Name="tbMenu_Tools" Header="常用工具">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="100" />
-                                <ColumnDefinition Width="100" />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <Grid Grid.Column="0">
-                                <Button Content="视频转图片" x:Name="tbMenu_Tools_V2F" Click="tbMenu_Tools_V2F_Click" />
-                            </Grid>
-                            <Grid Grid.Column="1">
-                                <Button Content="图片质量" x:Name="tbMenu_Tools_Standard" Click="tbMenu_Tools_Standard_Click" />
-                            </Grid>
-                        </Grid>
+                        <WrapPanel>
+                            <Button Content="视频转图片" x:Name="tbMenu_Tools_V2F" Click="tbMenu_Tools_V2F_Click"  Style="{StaticResource MenuButton}" />
+                            <Button Content="图片质量" x:Name="tbMenu_Tools_Standard" Click="tbMenu_Tools_Standard_Click" Style="{StaticResource MenuButton}" />
+                        </WrapPanel>
                     </TabItem>
                     <TabItem x:Name="tbMenu_About" Header="关于软件">
                         <WrapPanel>
-                            <Button x:Name="btnAbout" Content="关于" Click="btnAbout_Click" />
+                            <Button x:Name="btnAbout" Content="关于" Click="btnAbout_Click" Style="{StaticResource MenuButton}" />
                         </WrapPanel>
                     </TabItem>
                 </TabControl>
@@ -87,6 +74,8 @@
                 </StackPanel>
             </Grid>
         </Grid>
-        <Grid x:Name="gdBottom" Grid.Row="2"/>
+        <Grid x:Name="gdBottom" Grid.Row="2">
+            <Label x:Name="labMessage" />
+        </Grid>
     </Grid>
 </Window>

@@ -1,5 +1,6 @@
 ﻿using Kuafoo.Controllers;
 using Kuafoo.Model;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
@@ -55,19 +56,28 @@ namespace Kuafoo
             try
             {
                 var sel = "";
+                if (lsvFiles.SelectedValue != null)
+                    sel = lsvFiles.SelectedItem.ToString();
 
                 if (lsvFiles.SelectedValue == null)
                     return;
 
                 if (FileFactory.ContainsKey(sel))
-                {
                     imgViewer.Source = FileFactory[sel];
-                }
+                else
+                    PutText($"sel = {sel}");
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-                System.Console.WriteLine(ex.Message);
+                PutText(ex.Message);
             }
+        }
+        private void PutText(string info)
+        {
+            labMessage.Dispatcher.Invoke(() =>
+            {
+                labMessage.Content = info;
+            });
         }
         private void lsvItemOpen_Click(object sender, RoutedEventArgs e)
         {

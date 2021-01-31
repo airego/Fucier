@@ -18,26 +18,33 @@ namespace Kuafoo.Views.Shared.Controls
     /// </summary>
     public partial class UcImageViewer : UserControl
     {
+        private string FileUri { get; set; }
         public UcImageViewer()
         {
             InitializeComponent();
         }
         public string Source
         {
-            get { return img.Source.ToString(); }
+            get { return FileUri; }
             set
             {
-                if (value != null && value.Length > 0)
-                    img.Source = new BitmapImage(new Uri(value));
+                FileUri = value;
+                ScalToNormal();
             }
         }
         public void ScalToNormal()
         {
-            var centerPoint = Mouse.GetPosition(viewerRoot);
-            var p = viewerRoot.PointFromScreen(new Point(0, 0));
-            sfr.CenterX = p.X;
-            sfr.CenterY = p.Y;
-            sfr.ScaleX = sfr.ScaleY = 1;
+            if (img.Source != null)
+            {
+                img.Source = null;
+            }
+
+            img.Source = new BitmapImage(new Uri(FileUri, UriKind.RelativeOrAbsolute));
+            //var centerPoint = Mouse.GetPosition(viewerRoot);
+            //var p = viewerRoot.PointFromScreen(new Point(0, 0));
+            //sfr.CenterX = p.X;
+            //sfr.CenterY = p.Y;
+            //sfr.ScaleX = sfr.ScaleY = 1;
         }
         private void img_MouseWheel(object sender, MouseWheelEventArgs e)
         {
