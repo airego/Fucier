@@ -25,12 +25,16 @@ namespace Kuafoo.Views.Shared.Controls
         public string Source
         {
             get { return img.Source.ToString(); }
-            set { img.Source = new BitmapImage(new Uri(value)); }
+            set
+            {
+                if (value != null && value.Length > 0)
+                    img.Source = new BitmapImage(new Uri(value));
+            }
         }
         public void ScalToNormal()
         {
             var centerPoint = Mouse.GetPosition(viewerRoot);
-            var p = viewerRoot.PointFromScreen(new Point(0,0));
+            var p = viewerRoot.PointFromScreen(new Point(0, 0));
             sfr.CenterX = p.X;
             sfr.CenterY = p.Y;
             sfr.ScaleX = sfr.ScaleY = 1;

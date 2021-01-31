@@ -14,12 +14,16 @@
             <Setter Property="Width" Value="100" />
             <Setter Property="Height" Value="40" />
         </Style>
+        <ContextMenu x:Key="cmListView">
+            <MenuItem Name="lsvItemOpen" Header="打开" Click="lsvItemOpen_Click" />
+            <MenuItem Name="lsvItemClose" Header="关闭" Click="lsvItemClose_Click" />
+        </ContextMenu>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="70" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="70"/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
         <Grid x:Name="gdTop" Grid.Row="0">
             <StackPanel>
@@ -69,9 +73,19 @@
             </StackPanel>
         </Grid>
         <Grid x:Name="gdMiddle" Grid.Row="1">
-            <StackPanel>
-                <Controls:UcImageViewer x:Name="imgViewer" />
-            </StackPanel>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <ListBox x:Name="lsvFiles" SelectionChanged="lsvFiles_SelectionChanged" ContextMenu="{StaticResource cmListView}">
+                </ListBox>
+            </Grid>
+            <Grid Grid.Column="1">
+                <StackPanel>
+                    <Controls:UcImageViewer x:Name="imgViewer" />
+                </StackPanel>
+            </Grid>
         </Grid>
         <Grid x:Name="gdBottom" Grid.Row="2"/>
     </Grid>
